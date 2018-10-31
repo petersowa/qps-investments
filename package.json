@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@firebase/app-types": "^0.3.2",
+    "@reach/router": "^1.2.1",
     "@types/jest": "^23.3.8",
     "@types/node": "^10.12.1",
     "@types/react": "^16.4.18",

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Lato|PT+Serif|Comfortaa|Righteous|Special+Elite|Lora|Montserrat|Mukta|Open+Sans|Lobster|Arvo|Libre+Baskerville');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .App {
   text-align: center;
 }
@@ -29,4 +33,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  border: none;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  outline: none;
+  border-bottom: 1px solid green;
+  height: 3rem;
+  width: 100%;
+  text-shadow: rgba(0, 0, 0, 0.2) 2px 6px 5px,
+    rgba(255, 255, 255, 0.4) 0 -4px 30px;
+}
+
+button:active {
+  outline-style: none;
+}
+
+button:hover {
+  filter: drop-shadow(5px 5px 6px rgba(0, 0, 0, 0.9));
+  border-bottom: 1px solid blue;
+  transition: all 0.2s ease-in-out;
+}
+
+button:active {
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.9));
+  border-bottom: 1px solid blue;
+  transition: all 0.2s ease-in-out;
 }

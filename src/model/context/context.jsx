@@ -1,18 +1,16 @@
 import React from 'react';
-import Firebase from '../config/firebase/firebase';
+import Firebase from '../../config/firebase/firebase';
+import portfolios from './portfolio';
 
 const firebase = new Firebase().get();
 
-const ContextState = React.createContext({
-  firebase,
-  login: () => {},
-});
+const ContextState = React.createContext({ firebase });
 
 export class Provider extends React.Component {
   state = {
     isAuth: false,
-    authUser: '',
-    test: 'hello',
+    isAuthLoaded: false,
+    portfolios,
     toggleAuth: () => false,
   };
 
@@ -23,10 +21,12 @@ export class Provider extends React.Component {
     //console.log(this.context);
 
     firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
       if (user) {
         this.setState({ user, isAuthLoaded: true });
         const db = firebase.firestore();
         const uid = firebase.auth().currentUser.uid;
+
         db.collection(`todos/users/${uid}`)
           .get()
           .then(
@@ -53,8 +53,9 @@ export class Provider extends React.Component {
 
   render() {
     const { login, logout } = this;
+    const { portfolios } = this.state;
     return (
-      <ContextState.Provider value={{ firebase, login, logout }}>
+      <ContextState.Provider value={{ firebase, portfolios, login, logout }}>
         {this.props.children}
       </ContextState.Provider>
     );
