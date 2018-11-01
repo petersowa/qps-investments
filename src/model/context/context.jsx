@@ -12,6 +12,7 @@ export class Provider extends React.Component {
     isAuthLoaded: false,
     portfolios,
     toggleAuth: () => false,
+    sidebar: null,
   };
 
   static contextType = ContextState;
@@ -51,11 +52,24 @@ export class Provider extends React.Component {
     this.context.firebase.auth().signOut();
   };
 
+  setSidebar = sidebar => {
+    this.setState({ sidebar });
+  };
+
   render() {
-    const { login, logout } = this;
+    const { login, logout, setSidebar } = this;
     const { portfolios } = this.state;
     return (
-      <ContextState.Provider value={{ firebase, portfolios, login, logout }}>
+      <ContextState.Provider
+        value={{
+          firebase,
+          portfolios,
+          login,
+          logout,
+          setSidebar,
+          sidebar: this.state.sidebar,
+        }}
+      >
         {this.props.children}
       </ContextState.Provider>
     );
