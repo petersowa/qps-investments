@@ -12,7 +12,7 @@ const AppLayout = styled.div`
     'sidebar app rightbar'
     'footer footer footer';
   grid-template-columns: 2rem minmax(30rem, 1fr) minmax(20rem, 30rem);
-  grid-template-rows: 3rem minmax(calc(100vh - 5rem), 100%) 2rem;
+  grid-template-rows: 3rem minmax(calc(100vh - 5rem), 100vh) 2rem;
   padding: 0;
   grid-gap: 0;
 `;

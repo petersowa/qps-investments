@@ -1,5 +1,5 @@
 import React from 'react';
-import ContextState from '../../../model/context/context';
+import AppState from '../../../model/context/context';
 import styled from 'styled-components';
 import { SideManager } from '../../SideManager';
 
@@ -13,14 +13,17 @@ const SideArea = styled.div`
   grid-area: sidebar;
   width: 12rem;
   height: 100%;
+  top: 3rem;
   left: -10rem;
+  z-index: 5;
+  opacity: 0.8;
   &:hover {
     left: 0;
   }
   transition: left 0.2s ease-in-out;
   justify-items: center;
   grid-template-columns: 1fr;
-  align-content: center;
+  align-content: start;
 `;
 
 const AppArea = styled.div`
@@ -28,7 +31,7 @@ const AppArea = styled.div`
 `;
 
 class Portfolio extends React.Component {
-  static contextType = ContextState;
+  static contextType = AppState;
 
   render() {
     console.log(this.context);
@@ -55,22 +58,47 @@ const AppLayout = () => (
     <RightArea>
       <SideManager />
     </RightArea>
-    <ContextState.Consumer>
+    <AppState.Consumer>
       {context => (
         <SideArea>
           <button
             onClick={() => {
               console.log(context);
-              context.setSidebar(<div>Hello</div>);
+              context.setSidebar(
+                <div
+                  style={{
+                    height: '100vh',
+                    backgroundColor: '#eee',
+                    padding: '1rem',
+                  }}
+                >
+                  <h3>Hello</h3>
+                  Hello
+                </div>
+              );
             }}
           >
-            a
+            Hello
           </button>
-          <button>b</button>
-          <button>side</button>
+          <button
+            onClick={() => {
+              console.log(context);
+              context.setSidebar(<h3>Bye</h3>);
+            }}
+          >
+            Goodbye
+          </button>
+          <button
+            onClick={() => {
+              console.log(context);
+              context.setSidebar(null);
+            }}
+          >
+            side
+          </button>
         </SideArea>
       )}
-    </ContextState.Consumer>
+    </AppState.Consumer>
   </React.Fragment>
 );
 

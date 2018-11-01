@@ -52,9 +52,7 @@ export class Provider extends React.Component {
     this.context.firebase.auth().signOut();
   };
 
-  setSidebar = sidebar => {
-    this.setState({ sidebar });
-  };
+  setSidebar = sidebar => this.setState({ sidebar });
 
   render() {
     const { login, logout, setSidebar } = this;
