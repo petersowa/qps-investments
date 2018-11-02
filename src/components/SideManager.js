@@ -10,7 +10,7 @@ class SideManager extends React.Component {
   }
 
   render() {
-    return <div>{this.context.sidebar}</div>;
+    return this.context.sidebar.map(item => <div key={item.id}>{item.el}</div>);
   }
 }
 

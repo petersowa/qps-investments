@@ -12,8 +12,10 @@ export class Provider extends React.Component {
     isAuthLoaded: false,
     portfolios,
     toggleAuth: () => false,
-    sidebar: null,
+    sidebar: [],
   };
+
+  sidebarId = 0;
 
   static contextType = ContextState;
 
@@ -22,7 +24,7 @@ export class Provider extends React.Component {
     //console.log(this.context);
 
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
+      //console.log(user);
       if (user) {
         this.setState({ user, isAuthLoaded: true });
         const db = firebase.firestore();
@@ -52,7 +54,10 @@ export class Provider extends React.Component {
     this.context.firebase.auth().signOut();
   };
 
-  setSidebar = sidebar => this.setState({ sidebar });
+  setSidebar = el =>
+    this.setState({
+      sidebar: [{ id: this.sidebarId++, el }, ...this.state.sidebar],
+    });
 
   render() {
     const { login, logout, setSidebar } = this;

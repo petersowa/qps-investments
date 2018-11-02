@@ -2,6 +2,8 @@ import React from 'react';
 import AppState from '../../../model/context/context';
 import styled from 'styled-components';
 import { SideManager } from '../../SideManager';
+import Login from '../../../pages/login';
+import { Router, Link } from '@reach/router';
 
 const RightArea = styled.div`
   grid-area: rightbar;
@@ -34,7 +36,7 @@ class Portfolio extends React.Component {
   static contextType = AppState;
 
   render() {
-    console.log(this.context);
+    //console.log(this.context);
     return (
       <div>
         <h3>Finance App</h3>
@@ -52,7 +54,10 @@ const AppLayout = () => (
           padding: '1rem',
         }}
       >
-        <Portfolio />
+        <Router>
+          <Portfolio path="/" />
+          <Login path="login" />
+        </Router>
       </div>
     </AppArea>
     <RightArea>
@@ -63,11 +68,10 @@ const AppLayout = () => (
         <SideArea>
           <button
             onClick={() => {
-              console.log(context);
+              //console.log(context);
               context.setSidebar(
                 <div
                   style={{
-                    height: '100vh',
                     backgroundColor: '#eee',
                     padding: '1rem',
                   }}

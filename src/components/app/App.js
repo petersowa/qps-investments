@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Provider } from '../../model/context/context';
 import PortfolioApp from '../app/portfolio/portfolio';
+import Login from '../../pages/login';
+import { Router, Link } from '@reach/router';
 
 import './App.css';
 
